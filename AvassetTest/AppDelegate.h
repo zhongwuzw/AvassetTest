@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LiveCommandEngine.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+#define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) LiveCommandEngine *liveCommandEngine;
 
 
 @end

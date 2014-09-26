@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.liveCommandEngine = [[LiveCommandEngine alloc] initWithHostName:@"10.5.5.9"];
     return YES;
 }
 
