@@ -16,8 +16,22 @@
     static dispatch_once_t token;
     
     dispatch_once(&token,^{
-        singleton = [[GoProStatus alloc] init];
+        singleton = [[GoProStatus alloc] initGoProStatus];
     });
     return singleton;
+}
+
+- (id)initGoProStatus
+{
+    self = [super init];
+    if (self) {
+        ;
+    }
+    return self;
+}
+
+- (id)init
+{
+    return [GoProStatus sharedInstance];
 }
 @end

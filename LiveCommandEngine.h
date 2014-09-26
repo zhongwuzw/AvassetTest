@@ -7,6 +7,7 @@
 //
 #import "MKNetworkKit.h"
 #import "MKNetworkEngine.h"
+#include "GoProStatus.h"
 
 @interface LiveCommandEngine : MKNetworkEngine
 typedef void (^VoidBlock)(void);

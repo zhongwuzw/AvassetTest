@@ -60,17 +60,9 @@
         NSLog(@"commit error");
         DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
     }];
-    self.liveBroadTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(handleLiveCommand) userInfo:nil repeats:YES];
+    self.liveBroadTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(handleLiveCommand) userInfo:nil repeats:YES];
     
     self.liveCommandOperation = [ApplicationDelegate.liveCommandEngine statusInquire:@"se" onSucceeded:^(void){
-        
-        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-        NSString *finalDirectory = [documentDirectory stringByAppendingPathComponent:@"status.data"];
-        
-        NSData *data = [NSData dataWithContentsOfFile:finalDirectory];
-        NSString *dataString = [data description];
-        NSLog(@"数据是：%@",dataString);
         
     }errorHandler:^(NSError *error){
         NSLog(@"commit error");

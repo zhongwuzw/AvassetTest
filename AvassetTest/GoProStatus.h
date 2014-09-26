@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface GoProStatus : NSObject
-
+@property NSInteger currentMode;
+@property NSInteger defaultMode;
+@property NSInteger Battery;
+@property NSInteger photosAvailable;
+@property NSInteger photosCount;
+@property NSInteger videoRemainMin;
+@property NSInteger videoCount;
 + (GoProStatus *)sharedInstance;
 @end
