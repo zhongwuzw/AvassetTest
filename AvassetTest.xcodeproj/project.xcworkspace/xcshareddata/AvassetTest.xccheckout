@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A7B24E27-0139-4C12-949C-F0E7C157E749</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AvassetTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>24EF46CB5F3E2CFFD57F0FEB042AA12F0AB80F28</key>
+		<string>https://github.com/zhongwuzw/AvassetTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AvassetTest.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>24EF46CB5F3E2CFFD57F0FEB042AA12F0AB80F28</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zhongwuzw/AvassetTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>24EF46CB5F3E2CFFD57F0FEB042AA12F0AB80F28</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>24EF46CB5F3E2CFFD57F0FEB042AA12F0AB80F28</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AvassetTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

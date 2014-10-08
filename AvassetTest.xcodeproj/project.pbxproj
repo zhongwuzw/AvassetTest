@@ -24,6 +24,9 @@
 		0118B1F919D447E70097CDB8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0118B1EF19D447E70097CDB8 /* Reachability.m */; };
 		0118B1FC19D448240097CDB8 /* LiveCommandEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0118B1FB19D448240097CDB8 /* LiveCommandEngine.m */; };
 		0118B23419D5443D0097CDB8 /* GoProStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0118B23319D5443D0097CDB8 /* GoProStatus.m */; };
+		0118B23819D7DAB20097CDB8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0118B23719D7DAB20097CDB8 /* QuartzCore.framework */; };
+		0118B23A19D7DB960097CDB8 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 0118B23919D7DB950097CDB8 /* test.png */; };
+		0118B23D19D951DB0097CDB8 /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0118B23C19D951DB0097CDB8 /* TestPageViewController.m */; };
 		013DA28319CEC9C5004A9636 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DA28219CEC9C5004A9636 /* MyCollectionViewController.m */; };
 		013DA28619CEEFFD004A9636 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DA28519CEEFFD004A9636 /* MyCollectionViewCell.m */; };
 		013DA2A119CEF0F3004A9636 /* sa0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 013DA28819CEF0F3004A9636 /* sa0.jpg */; };
@@ -64,6 +67,10 @@
 		01C10A3419C80C9300FC7B04 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C10A3319C80C9300FC7B04 /* AVFoundation.framework */; };
 		01C10A3619C80CEF00FC7B04 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C10A3519C80CEF00FC7B04 /* CoreMedia.framework */; };
 		01C10A3919C816A400FC7B04 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 01C10A3819C816A400FC7B04 /* Movie.m4v */; };
+		01F97C5919DD72FD00B48F3B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97C5819DD72FD00B48F3B /* TestViewController.m */; };
+		01F97C5C19DDA29400B48F3B /* StoryBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97C5B19DDA29400B48F3B /* StoryBoardViewController.m */; };
+		01F97C6019DDA80F00B48F3B /* TestStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97C5E19DDA80F00B48F3B /* TestStoryViewController.m */; };
+		01F97C6119DDA80F00B48F3B /* TestStoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F97C5F19DDA80F00B48F3B /* TestStoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +115,10 @@
 		0118B22F19D44A670097CDB8 /* AvassetTestPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvassetTestPrefixHeader.pch; sourceTree = "<group>"; };
 		0118B23219D5443D0097CDB8 /* GoProStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoProStatus.h; sourceTree = "<group>"; };
 		0118B23319D5443D0097CDB8 /* GoProStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoProStatus.m; sourceTree = "<group>"; };
+		0118B23719D7DAB20097CDB8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0118B23919D7DB950097CDB8 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		0118B23B19D951DB0097CDB8 /* TestPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPageViewController.h; sourceTree = "<group>"; };
+		0118B23C19D951DB0097CDB8 /* TestPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPageViewController.m; sourceTree = "<group>"; };
 		013DA28119CEC9C5004A9636 /* MyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
 		013DA28219CEC9C5004A9636 /* MyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
 		013DA28419CEEFFD004A9636 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
@@ -158,6 +169,13 @@
 		01C10A3319C80C9300FC7B04 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		01C10A3519C80CEF00FC7B04 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		01C10A3819C816A400FC7B04 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
+		01F97C5719DD72FD00B48F3B /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		01F97C5819DD72FD00B48F3B /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		01F97C5A19DDA29400B48F3B /* StoryBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryBoardViewController.h; sourceTree = "<group>"; };
+		01F97C5B19DDA29400B48F3B /* StoryBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryBoardViewController.m; sourceTree = "<group>"; };
+		01F97C5D19DDA80F00B48F3B /* TestStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStoryViewController.h; sourceTree = "<group>"; };
+		01F97C5E19DDA80F00B48F3B /* TestStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStoryViewController.m; sourceTree = "<group>"; };
+		01F97C5F19DDA80F00B48F3B /* TestStoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestStoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0118B23819D7DAB20097CDB8 /* QuartzCore.framework in Frameworks */,
 				0118B1D619D445630097CDB8 /* ImageIO.framework in Frameworks */,
 				0118B1D419D4455C0097CDB8 /* Security.framework in Frameworks */,
 				0118B1D219D445550097CDB8 /* SystemConfiguration.framework in Frameworks */,
@@ -230,6 +249,7 @@
 		013DA28719CEF0DF004A9636 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				0118B23919D7DB950097CDB8 /* test.png */,
 				013DA28819CEF0F3004A9636 /* sa0.jpg */,
 				013DA28919CEF0F3004A9636 /* sa1.jpg */,
 				013DA28A19CEF0F3004A9636 /* sa2.jpg */,
@@ -262,6 +282,10 @@
 		01C10A0119C80C8200FC7B04 = {
 			isa = PBXGroup;
 			children = (
+				01F97C5D19DDA80F00B48F3B /* TestStoryViewController.h */,
+				01F97C5E19DDA80F00B48F3B /* TestStoryViewController.m */,
+				01F97C5F19DDA80F00B48F3B /* TestStoryViewController.xib */,
+				0118B23719D7DAB20097CDB8 /* QuartzCore.framework */,
 				0118B22F19D44A670097CDB8 /* AvassetTestPrefixHeader.pch */,
 				0118B1FA19D448240097CDB8 /* LiveCommandEngine.h */,
 				0118B1FB19D448240097CDB8 /* LiveCommandEngine.m */,
@@ -304,12 +328,18 @@
 				013DA28219CEC9C5004A9636 /* MyCollectionViewController.m */,
 				0118B19119D306450097CDB8 /* DecorationView.h */,
 				0118B19219D306450097CDB8 /* DecorationView.m */,
+				01F97C5719DD72FD00B48F3B /* TestViewController.h */,
+				01F97C5819DD72FD00B48F3B /* TestViewController.m */,
 				015A17A719CFF4B2003C5326 /* PunchedLayout.h */,
 				015A17A819CFF4B2003C5326 /* PunchedLayout.m */,
 				013DA28419CEEFFD004A9636 /* MyCollectionViewCell.h */,
 				013DA28519CEEFFD004A9636 /* MyCollectionViewCell.m */,
 				01C10A3819C816A400FC7B04 /* Movie.m4v */,
 				01C10A1719C80C8300FC7B04 /* Main.storyboard */,
+				01F97C5A19DDA29400B48F3B /* StoryBoardViewController.h */,
+				01F97C5B19DDA29400B48F3B /* StoryBoardViewController.m */,
+				0118B23B19D951DB0097CDB8 /* TestPageViewController.h */,
+				0118B23C19D951DB0097CDB8 /* TestPageViewController.m */,
 				01C10A1A19C80C8300FC7B04 /* Images.xcassets */,
 				01C10A1C19C80C8300FC7B04 /* LaunchScreen.xib */,
 				01C10A0D19C80C8200FC7B04 /* Supporting Files */,
@@ -426,8 +456,10 @@
 				013DA2B619CEF0F3004A9636 /* sa21.jpg in Resources */,
 				013DA2A319CEF0F3004A9636 /* sa2.jpg in Resources */,
 				013DA2B019CEF0F3004A9636 /* sa15.jpg in Resources */,
+				0118B23A19D7DB960097CDB8 /* test.png in Resources */,
 				013DA2AB19CEF0F3004A9636 /* sa10.jpg in Resources */,
 				01C10A1919C80C8300FC7B04 /* Main.storyboard in Resources */,
+				01F97C6119DDA80F00B48F3B /* TestStoryViewController.xib in Resources */,
 				01C10A1E19C80C8300FC7B04 /* LaunchScreen.xib in Resources */,
 				013DA2A919CEF0F3004A9636 /* sa8.jpg in Resources */,
 				013DA2A519CEF0F3004A9636 /* sa4.jpg in Resources */,
@@ -472,13 +504,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				013DA28319CEC9C5004A9636 /* MyCollectionViewController.m in Sources */,
+				01F97C5C19DDA29400B48F3B /* StoryBoardViewController.m in Sources */,
 				0118B1F719D447E70097CDB8 /* MKNetworkEngine.m in Sources */,
 				0118B1F819D447E70097CDB8 /* MKNetworkOperation.m in Sources */,
+				01F97C6019DDA80F00B48F3B /* TestStoryViewController.m in Sources */,
 				0118B23419D5443D0097CDB8 /* GoProStatus.m in Sources */,
 				01C10A1619C80C8300FC7B04 /* ViewController.m in Sources */,
 				0118B1F119D447E70097CDB8 /* NSData+MKBase64.m in Sources */,
 				0118B1F219D447E70097CDB8 /* NSDate+RFC1123.m in Sources */,
+				0118B23D19D951DB0097CDB8 /* TestPageViewController.m in Sources */,
 				01C10A1319C80C8200FC7B04 /* AppDelegate.m in Sources */,
+				01F97C5919DD72FD00B48F3B /* TestViewController.m in Sources */,
 				0118B1FC19D448240097CDB8 /* LiveCommandEngine.m in Sources */,
 				0118B19319D306450097CDB8 /* DecorationView.m in Sources */,
 				0118B1F419D447E70097CDB8 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -617,7 +653,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -631,7 +667,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

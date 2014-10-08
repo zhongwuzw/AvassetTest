@@ -53,6 +53,16 @@ static NSString * const reuseIdentifier = @"Cell";
 //    }
 //    return self;
 //}
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+}
+//- (UIBarButtonItem *)editButtonItem
+//{
+//    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"edit" style:UIBarButtonItemStyleBordered target:self action:nil];
+//    
+//    UIBarButtonItem *button1 = [[UIBarButtonItem alloc] ini]
+//    return button;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

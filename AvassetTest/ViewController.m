@@ -45,14 +45,23 @@
     UISlider *shit = [[UISlider alloc] initWithFrame:CGRectMake(10, 20, 100, 60)];
     [self.testView addSubview:shit];
     
+//    NSURL *m = [NSURL URLWithString:@"http://www.nasa.gov/multimedia/nasatv/NTV-Public-IPS.m3u8"];
+//    self.player = [AVPlayer playerWithURL:m];
+//    [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
+//    AVPlayerLayer *lay = [AVPlayerLayer playerLayerWithPlayer:self.player];
+//    lay.frame = CGRectMake(10, 10, 300, 200);
+//    // lay.frame = self.view.bounds;
+//    [self.view.layer addSublayer:lay];
+    
     self.liveCommandOperation = [ApplicationDelegate.liveCommandEngine startPreview:@"PV" symbol:@"02" onSucceeded:^(void){
         NSLog(@"finish recommit");
         NSURL *m = [NSURL URLWithString:@"http://10.5.5.9:8080/live/amba.m3u8"];
         self.player = [AVPlayer playerWithURL:m];
-        [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
+       // [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
+        [self.player.currentItem addObserver:self forKeyPath:@"status" options:0 context:nil];
         AVPlayerLayer *lay = [AVPlayerLayer playerLayerWithPlayer:self.player];
-       // lay.frame = CGRectMake(10, 10, 300, 200);
-        lay.frame = self.view.bounds;
+        lay.frame = CGRectMake(10, 10, 300, 200);
+       // lay.frame = self.view.bounds;
         [self.view.layer addSublayer:lay];
        // self.liveBroadView.backgroundColor = [UIColor blackColor];
        // [self.view addSubview:self.liveBroadView];
@@ -76,6 +85,12 @@
     
     [self.liveCommandOperation addDownloadStream:[NSOutputStream outputStreamToFileAtPath:finalDirectory append:NO]];
     
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test"]];
+    imageView.frame = CGRectMake(10, 250, 50, 50);
+    imageView.layer.masksToBounds = YES;
+    imageView.layer.cornerRadius = 25;
+    [self.view addSubview:imageView];
+    
 //    NSData *data = [NSData dataWithContentsOfFile:finalDirectory];
 //    NSString *dataString = [data description];
 //    NSLog(@"数据是：%@",dataString);
@@ -86,12 +101,18 @@
     
     //[self.liveCommandOperation addDownloadStream:[NSOutputStream outputStreamToBuffer:buf capacity:1024]];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.player.currentItem removeObserver:self forKeyPath:@"status"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if (object == self.player && [keyPath isEqualToString:@"status"]) {
-        if (self.player.status == AVPlayerStatusReadyToPlay) {
+    if (object == self.player.currentItem && [keyPath isEqualToString:@"status"]) {
+        if (self.player.currentItem.status == AVPlayerStatusReadyToPlay) {
             [self.player play];
             self.playButton.enabled = YES;
             
@@ -104,9 +125,15 @@
 }
 
 - (void)handleLiveCommand{
+    self.liveCommandOperation = [ApplicationDelegate.liveCommandEngine statusInquire:@"se" onSucceeded:^(void){
+        
+    }errorHandler:^(NSError *error){
+        NSLog(@"commit error");
+        DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
+    }];
     self.liveCommandOperation = [ApplicationDelegate.liveCommandEngine startPreview:@"PV" symbol:@"02" onSucceeded:^(void){
      //   NSLog(@"preview commit Success!");
-        [self.player play];
+      //  [self.player play];
         
     }errorHandler:^(NSError *error){
         
@@ -136,10 +163,14 @@
 //    layout.sectionInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
     
  //   MyCollectionViewController *mcc = [[MyCollectionViewController alloc] initWithCollectionViewLayout:layout];
+
     MyCollectionViewController *mcc = [[MyCollectionViewController alloc] init];
+    mcc.editing = YES;
+    mcc.navigationItem.leftBarButtonItem = [mcc editButtonItem];
 
     mcc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:mcc animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mcc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
