@@ -53,18 +53,20 @@
 //    // lay.frame = self.view.bounds;
 //    [self.view.layer addSublayer:lay];
     
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    self.documentDirectory = [documentDirectories objectAtIndex:0];
+    
+    
     self.liveCommandOperation = [ApplicationDelegate.liveCommandEngine startPreview:@"PV" symbol:@"02" onSucceeded:^(void){
         NSLog(@"finish recommit");
         NSURL *m = [NSURL URLWithString:@"http://10.5.5.9:8080/live/amba.m3u8"];
         self.player = [AVPlayer playerWithURL:m];
-       // [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
         [self.player.currentItem addObserver:self forKeyPath:@"status" options:0 context:nil];
         AVPlayerLayer *lay = [AVPlayerLayer playerLayerWithPlayer:self.player];
         lay.frame = CGRectMake(10, 10, 300, 200);
-       // lay.frame = self.view.bounds;
         [self.view.layer addSublayer:lay];
-       // self.liveBroadView.backgroundColor = [UIColor blackColor];
-       // [self.view addSubview:self.liveBroadView];
+    
+
     }errorHandler:^(NSError *error){
         NSLog(@"commit error");
         DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
@@ -79,11 +81,11 @@
     }];
     
    // uint8_t buf[1024];
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *finalDirectory = [documentDirectory stringByAppendingPathComponent:@"status.data"];
+
+    NSString *finalDirectory = [self.documentDirectory stringByAppendingPathComponent:@"status.data"];
     
     [self.liveCommandOperation addDownloadStream:[NSOutputStream outputStreamToFileAtPath:finalDirectory append:NO]];
+    
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test"]];
     imageView.frame = CGRectMake(10, 250, 50, 50);
@@ -139,7 +141,6 @@
         
         NSLog(@"preview commit error!");
         DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
-        
     }];
 }
 
@@ -150,10 +151,7 @@
 }
 
 - (IBAction)handleButton:(UIButton *)sender {
-    [self.player play];
-    NSInteger i = self.asset.tracks.count;
-    NSLog(@"%ld",i);
-    
+    [self.player setRate:0.0f];
 }
 
 - (IBAction)collectionTest:(id)sender {
@@ -195,5 +193,19 @@
 //    lay.frame = self.view.bounds;
 //    [self.view.layer addSublayer:lay];
     
+}
+- (IBAction)handleUploadStream:(UIButton *)sender {
+    for (int i = 1; i <= 16; i++) {
+        NSString *file = [[NSString alloc] initWithFormat:@"amba_hls-%d.ts",i];
+        self.liveDownloadTSOperation = [ApplicationDelegate.liveDownloadEngine downLoadTS:file onSucceeded:^(void){
+            
+        }errorHandler:^(NSError *error){
+            NSLog(@"download error");
+            DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
+        }];
+        
+        NSString *saveFile = [self.documentDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"amba_hls-%d.ts",i]];
+        [self.liveDownloadTSOperation addDownloadStream:[NSOutputStream outputStreamToFileAtPath:saveFile append:NO]];
+    }
 }
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LiveCommandEngine.h"
+#import "LiveDownloadTSEngine.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -15,7 +16,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LiveCommandEngine *liveCommandEngine;
-
+@property (strong, nonatomic) LiveDownloadTSEngine *liveDownloadEngine;
 
 @end
 

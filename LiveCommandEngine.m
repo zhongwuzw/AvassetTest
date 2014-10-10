@@ -32,7 +32,7 @@
         
         NSData *data = [NSData dataWithContentsOfFile:finalDirectory];
         NSString *dataString = [data description];
-        NSLog(@"%@",data);
+       // NSLog(@"%@",data);
         NSString *finalString = [[dataString substringWithRange:NSMakeRange(1, 69)] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         GoProStatus *goPro = [GoProStatus sharedInstance];
@@ -45,7 +45,7 @@
         goPro.videoRemainMin = [self handleHexDecimalToInt:[finalString substringWithRange:NSMakeRange(50, 4)]];
         goPro.videoCount = [self handleHexDecimalToInt:[finalString substringWithRange:NSMakeRange(54, 4)]];
 
-        NSLog(@"goPro的数据是：%@",goPro);
+    //    NSLog(@"goPro的数据是：%@",goPro);
         succeedBlock();
      
     }errorHandler:^(MKNetworkOperation *errorOp,NSError *error){

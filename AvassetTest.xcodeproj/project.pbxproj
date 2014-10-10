@@ -55,6 +55,7 @@
 		013DA2B819CEF0F3004A9636 /* sa23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 013DA29F19CEF0F3004A9636 /* sa23.jpg */; };
 		013DA2B919CEF0F3004A9636 /* sa24.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 013DA2A019CEF0F3004A9636 /* sa24.jpg */; };
 		015A17A919CFF4B2003C5326 /* PunchedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A17A819CFF4B2003C5326 /* PunchedLayout.m */; };
+		01A3CAC619E7825E00092476 /* LiveDownloadTSEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A3CAC519E7825E00092476 /* LiveDownloadTSEngine.m */; };
 		01BC362919D1B91600B94DF3 /* GOPR0216.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 01BC362819D1B91600B94DF3 /* GOPR0216.MP4 */; };
 		01BC362B19D1BB1C00B94DF3 /* G0010217.LRV.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 01BC362A19D1BB1C00B94DF3 /* G0010217.LRV.mp4 */; };
 		01C10A1019C80C8200FC7B04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C10A0F19C80C8200FC7B04 /* main.m */; };
@@ -151,6 +152,8 @@
 		015A17A719CFF4B2003C5326 /* PunchedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchedLayout.h; sourceTree = "<group>"; };
 		015A17A819CFF4B2003C5326 /* PunchedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchedLayout.m; sourceTree = "<group>"; };
 		01672C8419CD5BA8009825E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		01A3CAC419E7825E00092476 /* LiveDownloadTSEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveDownloadTSEngine.h; sourceTree = "<group>"; };
+		01A3CAC519E7825E00092476 /* LiveDownloadTSEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveDownloadTSEngine.m; sourceTree = "<group>"; };
 		01BC362819D1B91600B94DF3 /* GOPR0216.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOPR0216.MP4; sourceTree = "<group>"; };
 		01BC362A19D1BB1C00B94DF3 /* G0010217.LRV.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = G0010217.LRV.mp4; sourceTree = "<group>"; };
 		01C10A0A19C80C8200FC7B04 /* AvassetTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AvassetTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +290,8 @@
 				01F97C5F19DDA80F00B48F3B /* TestStoryViewController.xib */,
 				0118B23719D7DAB20097CDB8 /* QuartzCore.framework */,
 				0118B22F19D44A670097CDB8 /* AvassetTestPrefixHeader.pch */,
+				01A3CAC419E7825E00092476 /* LiveDownloadTSEngine.h */,
+				01A3CAC519E7825E00092476 /* LiveDownloadTSEngine.m */,
 				0118B1FA19D448240097CDB8 /* LiveCommandEngine.h */,
 				0118B1FB19D448240097CDB8 /* LiveCommandEngine.m */,
 				0118B1D819D447E70097CDB8 /* MKNetworkKit */,
@@ -517,6 +522,7 @@
 				01F97C5919DD72FD00B48F3B /* TestViewController.m in Sources */,
 				0118B1FC19D448240097CDB8 /* LiveCommandEngine.m in Sources */,
 				0118B19319D306450097CDB8 /* DecorationView.m in Sources */,
+				01A3CAC619E7825E00092476 /* LiveDownloadTSEngine.m in Sources */,
 				0118B1F419D447E70097CDB8 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				01C10A1019C80C8200FC7B04 /* main.m in Sources */,
 				0118B1F519D447E70097CDB8 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,

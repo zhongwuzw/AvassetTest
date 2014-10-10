@@ -18,6 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.liveCommandEngine = [[LiveCommandEngine alloc] initWithHostName:@"10.5.5.9"];
+    
+    self.liveDownloadEngine = [[LiveDownloadTSEngine alloc] initWithHostName:@"10.5.5.9" portNumber:8080 apiPath:nil customHeaderFields:nil];
+    
     return YES;
 }
 
