@@ -11,7 +11,7 @@
 #import "PunchedLayout.h"
 #import "DecorationView.h"
 
-@interface MyCollectionViewController : UIViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface MyCollectionViewController : UIViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong)UICollectionView *collectionViewTest;
 @property (nonatomic, strong)UIButton *editButton;

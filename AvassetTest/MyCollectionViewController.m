@@ -11,10 +11,14 @@
 #define USE_IMAGES 1
 
 @interface MyCollectionViewController ()
-
+- (void)testFun;
 @end
 
 @implementation MyCollectionViewController
+
+- (void)testFun{
+    NSLog(@"shi");
+}
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -72,7 +76,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
   //  UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     PunchedLayout *layout = [[PunchedLayout alloc] init];
-    [layout registerClass:[DecorationView class] forDecorationViewOfKind:@"decoration"];
     self.view.opaque = NO;
     self.view.backgroundColor = [UIColor colorWithRed: 120. / 0xFF green: 200. / 0xFF blue: 237. / 0xFF alpha: 1];
     
@@ -95,6 +98,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionViewTest.dataSource = self;
     self.collectionViewTest.delegate = self;
     
+    [self.collectionViewTest addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)]];
+    
     [self.view addSubview:self.collectionViewTest];
     
     NSLog(@"view's frame is %f",self.view.frame.size.height);
@@ -102,6 +107,35 @@ static NSString * const reuseIdentifier = @"Cell";
     //self.collectionViewTest.frame = CGRectMake(0, 0, 320, 300);
     
     // Do any additional setup after loading the view.
+}
+
+
+
+- (void)handlePinch:(UIPinchGestureRecognizer *)sender{
+    
+    if (sender.state == UIGestureRecognizerStateBegan || sender.state == UIGestureRecognizerStateChanged) {
+        if ([sender numberOfTouches] == 2) {
+            CGPoint p1 = [sender locationOfTouch:0 inView:[self collectionViewTest]];
+            CGPoint p2 = [sender locationOfTouch:1 inView:[self collectionViewTest]];
+            
+            CGFloat xd = p1.x - p2.x;
+            CGFloat yd = p1.y - p2.y;
+            CGFloat distance = sqrt(xd*xd + yd*yd);
+            
+            PunchedLayout *layout = (PunchedLayout *)[[self collectionViewTest] collectionViewLayout];
+            NSIndexPath *pinchItem = [self.collectionViewTest indexPathForItemAtPoint:CGPointMake(0.5*(p1.x + p2.x), 0.5*(p1.y + p2.y))];
+            [layout resizeItemAtIndexPath:pinchItem withPinchDistance:distance];
+            [layout invalidateLayout];
+        }
+    }
+    else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateFailed || sender.state == UIGestureRecognizerStateCancelled)
+    {
+        PunchedLayout *layout = (PunchedLayout *)[[self collectionViewTest] collectionViewLayout];
+        [self.collectionViewTest performBatchUpdates:^{
+            [layout resizePinchedItem];
+            [layout invalidateLayout];
+        }completion:nil];
+    }
 }
 
 - (void)handleEditButton:(UIButton *)sender{
@@ -158,15 +192,15 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(60.0f, 30.0f);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeMake(60.0f, 30.0f);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+//{
+//    return CGSizeMake(60.0f, 30.0f);
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//    return CGSizeMake(60.0f, 30.0f);
+//}
 
 #pragma mark <UICollectionViewDelegate>
 

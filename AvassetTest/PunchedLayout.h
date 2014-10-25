@@ -10,4 +10,7 @@
 
 @interface PunchedLayout : UICollectionViewFlowLayout
 
+- (void)resizeItemAtIndexPath:(NSIndexPath *)indexPath withPinchDistance:(CGFloat)distance;
+- (void)resizePinchedItem;
+
 @end

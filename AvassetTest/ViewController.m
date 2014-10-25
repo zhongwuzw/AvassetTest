@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "MyCollectionViewController.h"
+
 
 @interface ViewController ()
 
@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
   //  NSURL *m = [[NSBundle mainBundle] URLForResource:@"Movie" withExtension:@"m4v"];
  //   NSURL *m = [NSURL URLWithString:@"http://10.5.5.9:8080/live/amba.m3u8"];
   //  AVURLAsset *asset = [AVURLAsset URLAssetWithURL:m options:nil];
@@ -93,6 +94,37 @@
     imageView.layer.cornerRadius = 25;
     [self.view addSubview:imageView];
     
+    
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2,0, 30, 30)];
+    redView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:redView];
+    
+//    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+//    
+//    UISnapBehavior *snapBehaviour = [[UISnapBehavior alloc] initWithItem:redView snapToPoint:self.view.center];
+//    snapBehaviour.damping = 0.8f;
+//    [self.animator addBehavior:snapBehaviour];
+    
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[redView]];
+    gravityBehavior.gravityDirection = CGVectorMake(-1.0, 0);
+    [self.animator addBehavior:gravityBehavior];
+    
+    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[redView]];
+    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    [self.animator addBehavior:collisionBehavior];
+    
+    UIDynamicItemBehavior *elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[redView]];
+    elasticityBehavior.elasticity = 0.7f;
+    [self.animator addBehavior:elasticityBehavior];
+    
+    @autoreleasepool {
+        NSLog(@"starting thread....");
+        NSTimer *timer = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(doTimerTask) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+        
+    }
+    
 //    NSData *data = [NSData dataWithContentsOfFile:finalDirectory];
 //    NSString *dataString = [data description];
 //    NSLog(@"数据是：%@",dataString);
@@ -104,6 +136,11 @@
     //[self.liveCommandOperation addDownloadStream:[NSOutputStream outputStreamToBuffer:buf capacity:1024]];
     
     // Do any additional setup after loading the view, typically from a nib.    
+}
+
+- (void)doTimerTask
+{
+    NSLog(@"do timer task");
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -162,13 +199,15 @@
     
  //   MyCollectionViewController *mcc = [[MyCollectionViewController alloc] initWithCollectionViewLayout:layout];
 
-    MyCollectionViewController *mcc = [[MyCollectionViewController alloc] init];
-    mcc.editing = YES;
-    mcc.navigationItem.leftBarButtonItem = [mcc editButtonItem];
+  //  MyCollectionViewController *mcc = [[MyCollectionViewController alloc] init];
+    self.mcc = [[MyCollectionViewController alloc] init];
+    self.mcc.editing = YES;
+    self.mcc.navigationItem.leftBarButtonItem = [self.mcc editButtonItem];
 
-    mcc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mcc];
-    [self presentViewController:nav animated:YES completion:nil];
+    self.mcc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mcc];
+//    [self presentViewController:nav animated:YES completion:nil];
+   [self.view addSubview:self.mcc.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -195,17 +234,34 @@
     
 }
 - (IBAction)handleUploadStream:(UIButton *)sender {
-    for (int i = 1; i <= 16; i++) {
-        NSString *file = [[NSString alloc] initWithFormat:@"amba_hls-%d.ts",i];
-        self.liveDownloadTSOperation = [ApplicationDelegate.liveDownloadEngine downLoadTS:file onSucceeded:^(void){
-            
-        }errorHandler:^(NSError *error){
-            NSLog(@"download error");
-            DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
-        }];
+    self.liveUploadTimer = [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(handleLiveUpload) userInfo:nil repeats:YES];
+}
+
+- (void)handleLiveUpload{
+    double delayInSeconds = 0.00;
+    for (int i = 1; i <= 16; i+=1) {
+        if (i == 1) {
+            delayInSeconds = 0.0;
+        }else if (i == 5 || i == 9 || i == 13)
+            delayInSeconds += 1.00;
+        else
+            delayInSeconds += 0.01 ;
         
-        NSString *saveFile = [self.documentDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"amba_hls-%d.ts",i]];
-        [self.liveDownloadTSOperation addDownloadStream:[NSOutputStream outputStreamToFileAtPath:saveFile append:NO]];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            NSString *file = [[NSString alloc] initWithFormat:@"amba_hls-%d.ts",i];
+            self.liveDownloadTSOperation = [ApplicationDelegate.liveDownloadEngine downLoadTS:file onSucceeded:^(void){
+                
+            }errorHandler:^(NSError *error){
+                NSLog(@"download error");
+                DLog(@"%@\t%@\t%@\t%@",[error localizedDescription],[error localizedFailureReason],[error localizedRecoveryOptions],[error localizedRecoverySuggestion]);
+            }];
+            NSDate *date = [NSDate date];
+            NSTimeInterval aInterval = [date timeIntervalSince1970];
+            NSString *timeString = [NSString stringWithFormat:@"%f",aInterval];
+            NSString *saveFile = [self.documentDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"%@.ts",timeString]];
+            [self.liveDownloadTSOperation addDownloadStream:[NSOutputStream outputStreamToFileAtPath:saveFile append:NO]];
+        });
     }
 }
 @end

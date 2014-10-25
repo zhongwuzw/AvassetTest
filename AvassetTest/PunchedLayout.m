@@ -7,8 +7,36 @@
 //
 
 #import "PunchedLayout.h"
+@interface PunchedLayout()
+
+@property (nonatomic, strong)NSIndexPath *pinchItem;
+@property (nonatomic) CGSize pinchedItemSize;
+
+@end
 
 @implementation PunchedLayout
+
+- (void)resizeItemAtIndexPath:(NSIndexPath *)indexPath withPinchDistance:(CGFloat)distance
+{
+    self.pinchItem = indexPath;
+    self.pinchedItemSize = CGSizeMake(distance, distance);
+}
+
+- (void)resizePinchedItem
+{
+    self.pinchedItemSize = CGSizeMake(70.00, 70.00);
+ //   self.pinchItem = nil;
+}
+
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+{
+    NSArray *attrs = [super layoutAttributesForElementsInRect:rect];
+
+    UICollectionViewLayoutAttributes *attr = [[attrs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"indexPath == %@",_pinchItem]] firstObject];
+    attr.size = _pinchedItemSize;
+    attr.zIndex = 100;
+    return attrs;
+}
 
 //- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 //{

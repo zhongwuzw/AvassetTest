@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LiveCommandEngine.h"
 #import "LiveDownloadTSEngine.h"
+#import "RunLoopContext.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
+@property (strong, nonatomic) NSMutableArray *sourcesToPing;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LiveCommandEngine *liveCommandEngine;
 @property (strong, nonatomic) LiveDownloadTSEngine *liveDownloadEngine;

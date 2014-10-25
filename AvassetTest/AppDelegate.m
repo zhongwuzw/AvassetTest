@@ -9,13 +9,34 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
+- (void)registerSource:(RunLoopContext*)sourceInfo
+{
+    [self.sourcesToPing addObject:sourceInfo];
+}
+
+- (void)removeSource:(RunLoopContext*)sourceInfo
+{
+    id  objToRemove = nil;
+    
+    for (RunLoopContext* context in self.sourcesToPing)
+    {
+        if ([context isEqual:sourceInfo])
+        {
+            objToRemove = context;
+            break;
+        }
+    }
+    
+    if (objToRemove)
+        [self.sourcesToPing removeObject:objToRemove];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.sourcesToPing = [NSMutableArray array];
     // Override point for customization after application launch.
     self.liveCommandEngine = [[LiveCommandEngine alloc] initWithHostName:@"10.5.5.9"];
     
